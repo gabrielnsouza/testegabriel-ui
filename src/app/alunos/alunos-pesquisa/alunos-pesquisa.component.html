@@ -1,0 +1,44 @@
+
+<div class="container">
+    <div class="ui-g">
+
+        <form autocomplete="off" (ngSubmit)="pesquisar()"> 
+            <div class="ui-g-12">
+                <h1>Alunos</h1>
+            </div>
+        
+            <div class="ui-g-12 ui-fluid">
+            <label>Nome:</label>
+            <input type="text" pInputText name="nomeAluno" [(ngModel)]="nomeAluno" /> 
+            </div>
+        
+            <div class="ui-g-12">
+                <button pButton type="submit" label="Pesquisar"></button>
+            </div> 
+        </form>
+           
+      </div>  
+      
+      <div class="ui-g">
+          <div class="ui-g-12">
+              <p-dataTable [value]="alunos" [paginator]="true" [rows]="5">
+                  <p-column field="nomeAluno" header="Aluno"></p-column>
+                  <p-column styleClass="col-codigo" field="numeroMatricula" header="Matricula"></p-column>
+                  <p-column field="semestre" header="emestre"></p-column>
+                  <p-column field="status" header="Situação"></p-column>
+                  <p-column field="curso.nomeCurso" header="Curso"></p-column>
+                  <p-column styleClass="col-acoes">
+                    <ng-template let-aluno="rowData" pTemplate="body">
+                      <a pButton icon="fa-pencil" [routerLink]="['/aluno', aluno.id]"></a>
+                      <a pButton icon="fa-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmarExclusao(aluno)"></a>
+                    </ng-template>
+                  </p-column>
+              </p-dataTable>
+          </div>
+      </div>
+
+      <div class="ui-g-12">
+        <a routerLink="/aluno/novo" pButton label="Novo Aluno"></a>
+      </div>   
+</div>
+

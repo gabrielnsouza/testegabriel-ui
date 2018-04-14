@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="ui-g">
+
+      <form autocomplete="off" (ngSubmit)="pesquisar()">
+        <div class="ui-g-12">
+          <h1>Cursos</h1>
+        </div>
+      
+        <div class="ui-g-12 ui-fluid">
+          <label>Nome:</label>
+          <input pInputText type="text" name="nomeCurso"
+          [(ngModel)]="nomeCurso"> 
+        </div>
+      
+        <div class="ui-g-12">
+            <button pButton type="submit" label="Pesquisar"></button>
+        </div>  
+      </form>    
+    </div>  
+    
+      
+      <div class="ui-g">
+          <div class="ui-g-12">
+              <p-dataTable [value]="cursos" [paginator]="true" [rows]="5">
+                  <p-column field="nomeCurso" header="Curso"></p-column>
+                  <p-column styleClass="col-codigo" field="codigoCurso" header="Código"></p-column>
+                  <p-column field="instituicaoEnsino" header="Instituição"></p-column>
+                  <p-column styleClass="col-acoes">
+                    <ng-template let-curso="rowData" pTemplate="body">
+                      <a pButton icon="fa-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/curso', curso.id]"></a>
+                      <a pButton icon="fa-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmarExclusao(curso)"></a>
+                    </ng-template>
+                  </p-column>
+              </p-dataTable>
+          </div>
+      </div>
+
+      <div class="ui-g-12">
+        <a routerLink="/curso/novo" pButton label="Novo Curso"></a>
+      </div>
+
+</div>
+

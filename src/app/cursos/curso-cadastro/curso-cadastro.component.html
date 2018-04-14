@@ -1,0 +1,31 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+
+    <div class="ui-g">
+      <div class="ng-g-12">
+        <h1>{{ editando ? 'Editar' : 'Novo' }} Curso</h1>
+      </div>
+    </div>
+
+    <div class="ui-g-12 ui-fluid"> 
+      <label>Nome:</label>
+      <input pInputText type="text" name="nomeCurso" id="nome" [(ngModel)]="curso.nomeCurso">
+    </div>
+
+    <div class="ui-g-12 ui-fluid"> 
+      <label>Código:</label>
+      <input pInputText type="text" name="codigoCurso" id="codigoCurso" [(ngModel)]="curso.codigoCurso">
+    </div>
+
+    <div class="ui-g-12 ui-fluid"> 
+      <label>Instituição:</label>
+      <input pInputText type="text" name="instituicaoEnsino" id="instituicaoEnsino" [(ngModel)]="curso.instituicaoEnsino">
+    </div>
+
+    <div class="ui-g-12">
+      <button pButton type="submit" label="Salvar"></button>
+      <a routerLink="/cursos" pButton label="Voltar"></a>
+    </div>   
+
+  </form>
+</div>

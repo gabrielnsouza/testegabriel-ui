@@ -1,0 +1,43 @@
+<div class="container">
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+
+      <div class="ui-g">
+        <div class="ng-g-12">
+          <h1>{{ editando ? 'Editar' : 'Novo' }} Aluno</h1>
+        </div>
+      </div>
+  
+      <div class="ui-g-12 ui-fluid"> 
+        <label>Nome:</label>
+        <input pInputText type="text" name="nomeAluno" id="nomeAluno" [(ngModel)]="aluno.nomeAluno">
+      </div>
+  
+      <div class="ui-g-12 ui-fluid"> 
+        <label>Matrícula:</label>
+        <input pInputText type="text" name="matricula" id="matricula" [(ngModel)]="aluno.numeroMatricula">
+      </div>
+  
+      <div class="ui-g-12 ui-fluid"> 
+        <label>Semestre:</label>
+        <input pInputText type="text" name="semestre" id="semestre" [(ngModel)]="aluno.semestre">
+      </div>
+
+      <div class="ui-g-12 ui-fluid"> 
+          <label>Situação:</label>
+          <p-dropdown [options]="status" name="status" placeholder="Selecione"
+           [autoWidth]="false" [(ngModel)]="aluno.status"></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-fluid"> 
+          <label>Curso:</label>
+          <p-dropdown [options]="cursos" name="curso" placeholder="Selecione"
+          [autoWidth]="false" [(ngModel)]="aluno.curso.id"></p-dropdown>
+      </div>
+  
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar"></button>
+        <a routerLink="/alunos" pButton label="Voltar"></a>
+      </div>   
+  
+    </form>
+  </div>
